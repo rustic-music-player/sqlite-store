@@ -1,0 +1,6 @@
+CREATE TABLE artists
+(
+  id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  name VARCHAR(255) NOT NULL
+);
+CREATE UNIQUE INDEX artists_id_uindex ON artists (id);
