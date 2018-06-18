@@ -3,8 +3,9 @@ table! {
         id -> Integer,
         title -> Text,
         artist_id -> Nullable<Integer>,
-        coverart -> Nullable<Text>,
-        column_5 -> Nullable<Integer>,
+        image_url -> Nullable<Text>,
+        uri -> Text,
+        provider -> Integer,
     }
 }
 
@@ -12,6 +13,8 @@ table! {
     artists (id) {
         id -> Integer,
         name -> Text,
+        image_url -> Nullable<Text>,
+        uri -> Text,
     }
 }
 
@@ -22,10 +25,10 @@ table! {
         artist_id -> Nullable<Integer>,
         album_id -> Nullable<Integer>,
         stream_url -> Text,
+        provider -> Integer,
         uri -> Text,
-        coverart -> Nullable<Text>,
+        image_url -> Nullable<Text>,
         duration -> Nullable<Integer>,
-        column_9 -> Nullable<Integer>,
     }
 }
 

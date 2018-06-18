@@ -5,10 +5,10 @@ CREATE TABLE tracks
   artist_id INTEGER,
   album_id INTEGER,
   stream_url VARCHAR(255) NOT NULL,
-  uri VARCHAR(255) NOT NULL,
+  uri TEXT NOT NULL,
   coverart TEXT,
   duration INT,
-  column_9 INT,
+  provider INT,
   CONSTRAINT tracks_artists_id_fk FOREIGN KEY (artist_id) REFERENCES artists (id) ON DELETE SET NULL,
   CONSTRAINT tracks_albums_id_fk FOREIGN KEY (album_id) REFERENCES albums (id) ON DELETE SET NULL
 );

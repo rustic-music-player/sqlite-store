@@ -4,7 +4,10 @@ version = "0.1.0"
 authors = ["Max Jöhnk <maxjoehnk@gmail.com>"]
 
 [dependencies]
-diesel = { version = "1.0.0", features = ["sqlite"] }
+log = "0.4"
+failure = "0.1"
+diesel = { version = "1", features = ["sqlite"] }
+diesel_migrations = { version = "1", features = ["sqlite"] }
 
 [dependencies.rustic-core]
 git = "https://github.com/rustic-music-player/core"
