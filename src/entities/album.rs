@@ -18,6 +18,7 @@ impl AlbumEntity {
             id: Some(self.id as usize),
             title: self.title,
             artist_id: self.artist_id.map(|id| id as usize),
+            artist: None,
             provider: int_to_provider(self.provider)?,
             uri: self.uri,
             image_url: self.image_url
