@@ -24,7 +24,7 @@ impl ArtistEntity {
             id: Some(self.id as usize),
             name: self.name,
             uri: self.uri,
-            image_url: self.image_url
+            image_url: self.image_url,
         })
     }
 }
@@ -34,7 +34,7 @@ impl From<Artist> for ArtistInsert {
         ArtistInsert {
             name: artist.name,
             image_url: artist.image_url,
-            uri: artist.uri
+            uri: artist.uri,
         }
     }
 }

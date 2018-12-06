@@ -6,26 +6,26 @@ extern crate diesel_migrations;
 extern crate log;
 #[macro_use]
 extern crate failure;
-extern crate rustic_core as core;
 extern crate rustic_core;
+extern crate rustic_core as core;
 
 embed_migrations!();
 
 mod entities;
 mod schema;
 
+use diesel::insert_into;
 use diesel::prelude::*;
 use diesel::sqlite::SqliteConnection;
-use diesel::insert_into;
 
-use core::{Track, Playlist, Artist, Album, SearchResults};
+use core::{Album, Artist, Playlist, SearchResults, Track};
 use std::sync::{Arc, Mutex};
 
 use failure::Error;
 
 #[derive(Clone)]
 pub struct SqliteLibrary {
-    connection: Arc<Mutex<SqliteConnection>>
+    connection: Arc<Mutex<SqliteConnection>>,
 }
 
 impl SqliteLibrary {
@@ -37,7 +37,7 @@ impl SqliteLibrary {
         embedded_migrations::run(&connection)?;
 
         Ok(SqliteLibrary {
-            connection: Arc::new(Mutex::new(connection))
+            connection: Arc::new(Mutex::new(connection)),
         })
     }
 }
@@ -53,11 +53,9 @@ impl core::Library for SqliteLibrary {
             .first::<entities::TrackEntity>(&*connection)
             .optional()
             .map_err(Error::from)
-            .and_then(|track| {
-                match track {
-                    Some(entity) => Ok(Some(entity.into_track()?)),
-                    None => Ok(None)
-                }
+            .and_then(|track| match track {
+                Some(entity) => Ok(Some(entity.into_track()?)),
+                None => Ok(None),
             })
     }
 
@@ -84,11 +82,9 @@ impl core::Library for SqliteLibrary {
             .first::<entities::AlbumEntity>(&*connection)
             .optional()
             .map_err(Error::from)
-            .and_then(|album| {
-                match album {
-                    Some(entity) => Ok(Some(entity.into_album()?)),
-                    None => Ok(None)
-                }
+            .and_then(|album| match album {
+                Some(entity) => Ok(Some(entity.into_album()?)),
+                None => Ok(None),
             })
     }
 
@@ -115,11 +111,9 @@ impl core::Library for SqliteLibrary {
             .first::<entities::ArtistEntity>(&*connection)
             .optional()
             .map_err(Error::from)
-            .and_then(|artist| {
-                match artist {
-                    Some(entity) => Ok(Some(entity.into_artist()?)),
-                    None => Ok(None)
-                }
+            .and_then(|artist| match artist {
+                Some(entity) => Ok(Some(entity.into_artist()?)),
+                None => Ok(None),
             })
     }
 
@@ -159,9 +153,7 @@ impl core::Library for SqliteLibrary {
 
         let entity: entities::ArtistInsert = artist.clone().into();
 
-        insert_into(artists)
-            .values(&entity)
-            .execute(&*connection)?;
+        insert_into(artists).values(&entity).execute(&*connection)?;
 
         Ok(())
     }
