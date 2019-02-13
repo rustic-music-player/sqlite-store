@@ -43,13 +43,13 @@ impl SqliteLibrary {
 }
 
 impl core::Library for SqliteLibrary {
-    fn get_track(&self, track_id: &usize) -> Result<Option<Track>, Error> {
+    fn get_track(&self, track_id: usize) -> Result<Option<Track>, Error> {
         use schema::tracks::dsl::*;
 
         let connection = self.connection.lock().unwrap();
 
         tracks
-            .find(*track_id as i32)
+            .find(track_id as i32)
             .first::<entities::TrackEntity>(&*connection)
             .optional()
             .map_err(Error::from)
@@ -72,13 +72,13 @@ impl core::Library for SqliteLibrary {
             .collect()
     }
 
-    fn get_album(&self, album_id: &usize) -> Result<Option<Album>, Error> {
+    fn get_album(&self, album_id: usize) -> Result<Option<Album>, Error> {
         use schema::albums::dsl::*;
 
         let connection = self.connection.lock().unwrap();
 
         albums
-            .find(*album_id as i32)
+            .find(album_id as i32)
             .first::<entities::AlbumEntity>(&*connection)
             .optional()
             .map_err(Error::from)
@@ -101,13 +101,13 @@ impl core::Library for SqliteLibrary {
             .collect()
     }
 
-    fn get_artist(&self, artist_id: &usize) -> Result<Option<Artist>, Error> {
+    fn get_artist(&self, artist_id: usize) -> Result<Option<Artist>, Error> {
         use schema::artists::dsl::*;
 
         let connection = self.connection.lock().unwrap();
 
         artists
-            .find(*artist_id as i32)
+            .find(artist_id as i32)
             .first::<entities::ArtistEntity>(&*connection)
             .optional()
             .map_err(Error::from)
@@ -130,7 +130,7 @@ impl core::Library for SqliteLibrary {
             .collect()
     }
 
-    fn get_playlist(&self, _playlist_id: &usize) -> Result<Option<Playlist>, Error> {
+    fn get_playlist(&self, _playlist_id: usize) -> Result<Option<Playlist>, Error> {
         unimplemented!()
     }
 
@@ -138,11 +138,11 @@ impl core::Library for SqliteLibrary {
         unimplemented!()
     }
 
-    fn add_track(&self, track: &mut Track) -> Result<(), Error> {
+    fn add_track(&self, _track: &mut Track) -> Result<(), Error> {
         unimplemented!()
     }
 
-    fn add_album(&self, album: &mut Album) -> Result<(), Error> {
+    fn add_album(&self, _album: &mut Album) -> Result<(), Error> {
         unimplemented!()
     }
 
@@ -158,59 +158,59 @@ impl core::Library for SqliteLibrary {
         Ok(())
     }
 
-    fn add_playlist(&self, playlist: &mut Playlist) -> Result<(), Error> {
+    fn add_playlist(&self, _playlist: &mut Playlist) -> Result<(), Error> {
         unimplemented!()
     }
 
-    fn add_tracks(&self, tracks: &mut Vec<Track>) -> Result<(), Error> {
+    fn add_tracks(&self, _tracks: &mut Vec<Track>) -> Result<(), Error> {
         unimplemented!()
     }
 
-    fn add_albums(&self, albums: &mut Vec<Album>) -> Result<(), Error> {
+    fn add_albums(&self, _albums: &mut Vec<Album>) -> Result<(), Error> {
         unimplemented!()
     }
 
-    fn add_artists(&self, artists: &mut Vec<Artist>) -> Result<(), Error> {
+    fn add_artists(&self, _artists: &mut Vec<Artist>) -> Result<(), Error> {
         unimplemented!()
     }
 
-    fn add_playlists(&self, playlists: &mut Vec<Playlist>) -> Result<(), Error> {
+    fn add_playlists(&self, _playlists: &mut Vec<Playlist>) -> Result<(), Error> {
         unimplemented!()
     }
 
-    fn sync_track(&self, track: &mut Track) -> Result<(), Error> {
+    fn sync_track(&self, _track: &mut Track) -> Result<(), Error> {
         unimplemented!()
     }
 
-    fn sync_album(&self, album: &mut Album) -> Result<(), Error> {
+    fn sync_album(&self, _album: &mut Album) -> Result<(), Error> {
         unimplemented!()
     }
 
-    fn sync_artist(&self, artist: &mut Artist) -> Result<(), Error> {
+    fn sync_artist(&self, _artist: &mut Artist) -> Result<(), Error> {
         unimplemented!()
     }
 
-    fn sync_playlist(&self, playlist: &mut Playlist) -> Result<(), Error> {
+    fn sync_playlist(&self, _playlist: &mut Playlist) -> Result<(), Error> {
         unimplemented!()
     }
 
-    fn sync_tracks(&self, tracks: &mut Vec<Track>) -> Result<(), Error> {
+    fn sync_tracks(&self, _tracks: &mut Vec<Track>) -> Result<(), Error> {
         unimplemented!()
     }
 
-    fn sync_albums(&self, albums: &mut Vec<Album>) -> Result<(), Error> {
+    fn sync_albums(&self, _albums: &mut Vec<Album>) -> Result<(), Error> {
         unimplemented!()
     }
 
-    fn sync_artists(&self, artists: &mut Vec<Artist>) -> Result<(), Error> {
+    fn sync_artists(&self, _artists: &mut Vec<Artist>) -> Result<(), Error> {
         unimplemented!()
     }
 
-    fn sync_playlists(&self, playlists: &mut Vec<Playlist>) -> Result<(), Error> {
+    fn sync_playlists(&self, _playlists: &mut Vec<Playlist>) -> Result<(), Error> {
         unimplemented!()
     }
 
-    fn search(&self, query: String) -> Result<SearchResults, Error> {
+    fn search(&self, _query: String) -> Result<SearchResults, Error> {
         unimplemented!()
     }
 }
