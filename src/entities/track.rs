@@ -29,6 +29,7 @@ impl TrackEntity {
             uri: self.uri,
             image_url: self.image_url,
             duration: self.duration.map(|duration| duration as u64),
+            meta: unimplemented!()
         })
     }
 }
