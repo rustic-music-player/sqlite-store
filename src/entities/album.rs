@@ -1,6 +1,7 @@
+use failure::Error;
+
 use core::Album;
 use entities::provider::int_to_provider;
-use failure::Error;
 
 #[derive(Queryable)]
 pub struct AlbumEntity {
@@ -22,6 +23,7 @@ impl AlbumEntity {
             provider: int_to_provider(self.provider)?,
             uri: self.uri,
             image_url: self.image_url,
+            meta: unimplemented!(),
         })
     }
 }

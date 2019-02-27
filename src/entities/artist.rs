@@ -25,6 +25,7 @@ impl ArtistEntity {
             name: self.name,
             uri: self.uri,
             image_url: self.image_url,
+            meta: unimplemented!()
         })
     }
 }

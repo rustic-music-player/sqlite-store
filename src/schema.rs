@@ -24,7 +24,6 @@ table! {
         title -> Text,
         artist_id -> Nullable<Integer>,
         album_id -> Nullable<Integer>,
-        stream_url -> Text,
         provider -> Integer,
         uri -> Text,
         image_url -> Nullable<Text>,

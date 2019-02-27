@@ -4,7 +4,6 @@ CREATE TABLE tracks
   title VARCHAR(255) NOT NULL,
   artist_id INTEGER,
   album_id INTEGER,
-  stream_url VARCHAR(255) NOT NULL,
   uri TEXT NOT NULL,
   coverart TEXT,
   duration INT,
